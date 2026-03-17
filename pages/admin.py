@@ -52,13 +52,7 @@ if st.button("Process Documents", type="primary"):
         if not os.path.exists(DATA_DIR):
             os.makedirs(DATA_DIR)
         
-        # Enforce exclusive upload: Clear data directory before saving new files
-        if os.path.exists(DATA_DIR):
-            for f in os.listdir(DATA_DIR):
-                try:
-                    os.remove(os.path.join(DATA_DIR, f))
-                except Exception:
-                    pass
+        # We don't wipe the directory here, allowing accumulating files
         
         # Save uploaded files
         for uf in uploaded_files:
